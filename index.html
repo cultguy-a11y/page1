@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CULT & HABITAT - Spaces for a Better You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #D4A574;
+            --gold-dark: #8B6F47;
+            --cream: #FAF8F3;
+            --charcoal: #2B2B2B;
+            --light-border: #E8E3D8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--cream) 0%, #fff9f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .headline {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        .headline-accent {
+            color: var(--gold-primary);
+        }
+
+        .core-message {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* Credibility Section */
+        .credibility {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            width: 100%;
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(212, 165, 116, 0.06);
+            border-radius: 8px;
+            border: 1px solid var(--light-border);
+        }
+
+        .credential {
+            text-align: center;
+        }
+
+        .credential-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 8px;
+        }
+
+        .credential-label {
+            font-size: 0.95rem;
+            color: #777;
+            text-transform: capitalize;
+            letter-spacing: 0.03em;
+        }
+
+        /* CTA Section */
+        .cta-block {
+            margin-top: 60px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 48px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gold-primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(212, 165, 116, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-dark);
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 2px solid var(--gold-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold-primary);
+            color: white;
+        }
+
+        /* Product Preview Section */
+        .products-section {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--cream);
+            padding: 40px 30px;
+            border-radius: 4px;
+            border: 1px solid var(--light-border);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold-primary);
+            margin: 30px auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .logo {
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .headline {
+            animation-delay: 0.2s;
+        }
+
+        .core-message {
+            animation-delay: 0.4s;
+        }
+
+        .credibility {
+            animation-delay: 0.6s;
+        }
+
+        .cta-block {
+            animation-delay: 0.8s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+                min-height: auto;
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            .logo {
+                width: 140px;
+                margin-bottom: 40px;
+            }
+
+            .headline {
+                margin-bottom: 24px;
+            }
+
+            .core-message {
+                margin-bottom: 40px;
+            }
+
+            .credibility {
+                gap: 24px;
+                padding: 32px 24px;
+            }
+
+            .credential-number {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 14px 36px;
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            .cta-block {
+                margin-top: 40px;
+                flex-direction: column;
+            }
+
+            .products-section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <svg class="logo" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Logo Group -->
+                <g>
+                    <!-- Arches -->
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#E8D4B8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8B6F47;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Center Arch -->
+                    <path d="M 600 200 Q 700 200 700 400 L 700 600 Q 700 700 600 750 Q 500 700 500 600 L 500 400 Q 500 200 600 200" 
+                          fill="url(#goldGradient)" stroke="#C4A574" stroke-width="8"/>
+                    
+                    <!-- Left Arch -->
+                    <path d="M 350 300 Q 420 300 420 450 L 420 650 Q 420 750 350 800 Q 280 750 280 650 L 280 450 Q 280 300 350 300" 
+                          fill="url(#goldGradient)" stroke="#C4A574" stroke-width="8"/>
+                    
+                    <!-- Right Arch -->
+                    <path d="M 850 300 Q 920 300 920 450 L 920 650 Q 920 750 850 800 Q 780 750 780 650 L 780 450 Q 780 300 850 300" 
+                          fill="url(#goldGradient)" stroke="#C4A574" stroke-width="8"/>
+                    
+                    <!-- Base Line -->
+                    <line x1="250" y1="820" x2="950" y2="820" stroke="#8B6F47" stroke-width="12"/>
+                </g>
+            </svg>
+
+            <h1 class="headline">
+                Design Your <span class="headline-accent">Perfect Interior</span>
+            </h1>
+
+            <p class="core-message">
+                We create premium surface solutions—from elegant laminates to stunning acrylics and doors—that transform living spaces into personal sanctuaries. Every design choice reflects our commitment to quality, durability, and aesthetic excellence. Whether you're an architect, designer, or homeowner, we provide the materials that turn vision into reality.
+            </p>
+
+            <div class="credibility">
+                <div class="credential">
+                    <div class="credential-number">71+</div>
+                    <div class="credential-label">Premium Designs</div>
+                </div>
+                <div class="credential">
+                    <div class="credential-number">10+</div>
+                    <div class="credential-label">Architect Partners</div>
+                </div>
+                <div class="credential">
+                    <div class="credential-number">3</div>
+                    <div class="credential-label">Product Categories</div>
+                </div>
+                <div class="credential">
+                    <div class="credential-number">6H</div>
+                    <div class="credential-label">Scratch Resistance</div>
+                </div>
+            </div>
+
+            <div class="cta-block">
+                <button class="btn btn-primary" onclick="document.querySelector('.products-section').scrollIntoView({behavior: 'smooth'})">
+                    Explore Collections
+                </button>
+                <button class="btn btn-secondary" onclick="alert('Connect with our design specialists')">
+                    Schedule Consultation
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="section-header">
+            <h2 class="section-title">Our Collections</h2>
+            <p class="section-description">
+                Curated ranges designed for every aesthetic and budget, from sophisticated matte finishes to eye-catching metallics
+            </p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">✨</div>
+                <h3 class="product-name">Premium Laminates</h3>
+                <p class="product-desc">1mm & 0.8mm options with 30+ finishes: digital, textured, marble, metallics, and more</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">💎</div>
+                <h3 class="product-name">Acrylic Surfaces</h3>
+                <p class="product-desc">UV mirror, fluted, sparkle, and solid options with anti-scratch protection</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🚪</div>
+                <h3 class="product-name">Door Solutions</h3>
+                <p class="product-desc">Flush doors, prelaminate doors, and decorative skins in diverse finishes</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🏗️</div>
+                <h3 class="product-name">Engineered Wood</h3>
+                <p class="product-desc">BWP plywood, BWR options, fire-retardant choices, and structural solutions</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🎨</div>
+                <h3 class="product-name">Endless Choices</h3>
+                <p class="product-desc">Matte, gloss, matte + gloss, leather finishes, wood textures, and solid colors</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">⚡</div>
+                <h3 class="product-name">Built to Last</h3>
+                <p class="product-desc">6H anti-scratch, durable finishes, easy maintenance, and premium craftsmanship</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="margin-top: 50px;">
+            <button class="btn btn-primary" onclick="alert('Connect with our design specialists')">
+                Get Your Free Design Consultation
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>CULT & HABITAT</strong></p>
+        <p>Spaces for a Better You</p>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">
+            Premium interior design materials | Laminates, Acrylics, Doors & Plywood
+        </p>
+    </footer>
+</body>
+</html>
